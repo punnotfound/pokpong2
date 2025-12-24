@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Hobby – By Pokpong</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #2c2c2c;
+  line-height: 1.8;
+  scroll-behavior: smooth;
+  background: #faf7f0;
+  overflow-x: hidden;
+}
+
+.navbar {
+  background: rgba(26,36,47,0.9);
+  color: white;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+.logo {
+  font-size: 44px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #f4d03f;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.nav-links a {
+  color: #e4e4e4;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: #ffd700;
+}
+.gallery-btn {
+  background: #f4d03f;
+  color: #1a242f;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(244, 208, 63, 0.3);
+  border: 2px solid #f4d03f;
+}
+.gallery-btn:hover {
+  background: transparent;
+  color: #f4d03f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(244, 208, 63, 0.4);
+}
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1597406901652-cb2e8b94e431?auto=format&fit=crop&w=1950&q=80') center/cover fixed;
+  background-blend-mode: overlay;
+  background-color: rgba(247,231,139,0.7);
+  text-align: center;
+  padding: 160px 20px;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  color: #2c2c2c;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.hero h1 {
+  font-size: 66px;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+.hero p {
+  max-width: 850px;
+  margin: auto;
+  font-size: 20px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+}
+
+.content {
+  max-width: 950px;
+  margin: 60px auto;
+  padding: 50px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  animation: fadeInUp 1.5s ease-in-out;
+}
+.content h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+  color: #1a242f;
+}
+.content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.side-info {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(253,246,227,0.95);
+  border-left: 6px solid #f4d03f;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  font-style: italic;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.side-info:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+.side-info h4 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #1a242f;
+}
+.side-info p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.media-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  perspective: 1000px;
+}
+.media-box {
+  max-width: 900px;
+  width: 100%;
+  padding: 25px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+.media-box:hover {
+  transform: translateY(-10px) rotateX(1deg);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.2);
+}
+.media-box h3 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #1a242f;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 50px;
+  max-width: 1400px;
+  margin: auto;
+}
+.card {
+  background: rgba(255,249,230,0.95);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  transition: transform 0.4s, box-shadow 0.4s;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+}
+.card-img {
+  height: 280px;
+  overflow: hidden;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.card:hover img {
+  transform: scale(1.1) rotate(1deg);
+}
+.card-content {
+  padding: 25px;
+}
+.card-content h4 {
+  font-size: 25px;
+  margin-bottom: 12px;
+  color: #1a242f;
+}
+.card-content p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f4d03f;
+  color: #1a242f;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.gallery-section {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 50px auto;
+}
+.gallery-section h2 {
+  font-size: 40px;
+  color: #1a242f;
+  margin-bottom: 25px;
+}
+.gallery-section p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gallery-link {
+  display: inline-block;
+  background: #f4d03f;
+  color: #1a242f;
+  padding: 16px 40px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(244, 208, 63, 0.3);
+  border: 2px solid #f4d03f;
+  position: relative;
+  overflow: hidden;
+}
+.gallery-link:hover {
+  background: transparent;
+  color: #1a242f;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(244, 208, 63, 0.4);
+}
+.gallery-link::after {
+  content: "→";
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+.gallery-link:hover::after {
+  transform: translateX(5px);
+}
+
+.map-container {
+  max-width: 900px;
+  margin: 50px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: 0;
+}
+
+footer {
+  background: rgba(26,36,47,0.9);
+  color: #e4e4e4;
+  text-align: center;
+  padding: 50px 20px;
+  margin-top: 60px;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  backdrop-filter: blur(8px);
+}
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.gallery-link {
+  animation: pulse 2s infinite;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">My Hobby</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#places">Places</a>
+    <a href="#contact">Contact</a>
+    <a href="gallery.html" class="gallery-btn">Photo Gallery</a>
+  </div>
+</nav>
+
+<div class="hero" id="home">
+  <h1>Welcome to My Bangkok Adventures</h1>
+  <p>Walking through the heart of Bangkok, I discover stories in every street and serenity in every temple. Join me as I explore the timeless beauty and culture of this magnificent city.</p>
+</div>
+
+<div class="content" id="about">
+  <h2>About My Hobby</h2>
+  <p>
+    Hi, I'm <strong>Pokpong</strong>. One of my greatest joys is wandering through Bangkok, exploring hidden corners, lively markets, and serene temples. Every walk is a chance to witness the city's vibrant life and peaceful sanctuaries.
+    <br><br>
+    Visiting temples allows me to experience Bangkok's spiritual heart, marvel at intricate architecture, and reflect amidst calm surroundings. Each temple tells a story that connects the past with the present.
+  </p>
+  <div class="side-info">
+    <h4>Did You See?</h4>
+    <p>Beyond the main streets, Bangkok hides secret alleys with tiny shrines, charming cafes, and murals that few tourists notice. Every stroll holds a discovery waiting to be found.</p>
+  </div>
+</div>
+
+<div class="media-container" id="places">
+  <div class="media-box">
+    <h3>The Grand Palace</h3>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/3hD_4RaVTYI" 
+              title="The Grand Palace in Bangkok" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="card-img">
+      <img src="https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/62/2024/08/29074619/Wat-Phra-Kaew.jpg" alt="Grand Palace">
+      <div class="card-badge">Hidden Gem</div>
+    </div>
+    <div class="card-content">
+      <h4>The Grand Palace</h4>
+      <p>The Grand Palace is Bangkok's most iconic landmark, adorned with gold and rich history, and home to the revered Emerald Buddha.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="https://www.agoda.com/wp-content/uploads/2024/07/Wat-Pho-Bangkok.jpg" alt="Wat Pho">
+    </div>
+    <div class="card-content">
+      <h4>Wat Pho</h4>
+      <p>Famous for its Reclining Buddha, Wat Pho is a peaceful sanctuary, rich in Thai massage history and traditional learning.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="https://www.shutterstock.com/image-photo/bangkok-thailand-mei-24-2023-600nw-2327019075.jpg" alt="Sao Chingcha">
+    </div>
+    <div class="card-content">
+      <h4>Sao Chingcha</h4>
+      <p>The Giant Swing is a historic symbol in Bangkok, once used in Brahmin ceremonies, now a visual link to the city's rich cultural traditions.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="https://live.staticflickr.com/7844/32982160058_d92a5b1b1d_b.jpg" alt="Bangkok City Library">
+    </div>
+    <div class="card-content">
+      <h4>Bangkok City Library</h4>
+      <p>A modern, quiet escape in the Old Town, combining contemporary design with calm spaces, perfect for reading or reflecting during your walk.</p>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-section">
+  <h2>More Bangkok Moments</h2>
+  <p>Explore 27 captivating photos from my adventures across Bangkok's temples, streets, and hidden corners.</p>
+  <a href="gallery.html" class="gallery-link">View Full Photo Gallery</a>
+</div>
+
+<div class="map-container">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.123456!2d100.5018!3d13.7563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29edcabc12345%3A0xabcdef123456!2sBangkok%20Old%20Town!5e0!3m2!1sen!2sth!4v1601181234567!5m2!1sen!2sth" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<footer id="contact">
+  <p>&copy; 2023 My Bangkok Adventures – By Pokpong</p>
+  <p><a href="gallery.html">View Photo Gallery</a> | <a href="#home">Back to Top</a></p>
+</footer>
+
+</body>
+</html>
